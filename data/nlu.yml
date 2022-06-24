@@ -1,0 +1,118 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - yo
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+- intent: grievance_help
+  examples: |
+    - I have a legal grievance
+    - I have a legal problem
+    - I need legal advice can you provide help?
+    - please provide legal advice for my problem
+- intent: inform_grievance_type
+  examples: |
+    - My grievance is related to [good](grievance_type)
+    - My problem is related to [service](grievance_type)
+    - My problem is related to [good](grievance_type)
+    - [Good](grievance_type)
+    - [service](grievance_type)
+    - [good](grievance_type)
+    - [Service](grievance_type)
+    - [good](grievance_type)
+- intent: inform_amount_money_paid
+  examples: |
+    - [60000](amount_money_paid)
+    - I have paid [20000](amount_money_paid)
+- intent: inform_fault_identify_date
+  examples: |
+    - [24 jan](fault_identify_date)
+    - the date on which I identified this defect for the first time is [2 december 2019](fault_identify_date)
+    - [5th FEB 2018](fault_identify_date) was the date.
+    - I came to know about it on [05/03/2016](fault_identify_date)
+    - [26 jan](fault_identify_date)
+- intent: inform_complaint_not_filed_details
+  examples: |
+    - I was not aware of the complaint forum.
+- intent: inform_location
+  examples: |
+    - I am located in Mumbai.The seller is from mumbai and i bought the hard disk from mumbai.

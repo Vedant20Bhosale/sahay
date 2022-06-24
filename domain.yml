@@ -1,0 +1,221 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - grievance_help
+  - inform_grievance_type
+  - inform_amount_money_paid
+  - inform_fault_identify_date
+  - inform_location
+  - inform_complaint_not_filed_details
+
+responses:
+  utter_greet_user:
+  - text: "Hi , Welcome to this group I am rasaBot! Your friendly bot agent . How can I assist you today?"
+
+  utter_greet:
+  - text: "Hey! what do you want to search for"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_ask_grievance_type:
+  - text: "Is your grievance related to a good or a service?"
+
+  utter_ask_if_money_paid:
+  - text: "Have you paid or promised to pay any sum of money in exchange of receiving such {grievance_type}?"
+    buttons:
+    - title: "if_money_paid is yes"
+      payload: '/affirm{{"if_money_paid":"yes"}}'
+    - title: "if_money_paid is no"
+      payload: '/deny{{"if_money_paid":"no"}}'
+
+  utter_ask_money_details_form_amount_money_paid:
+  - text: "How much money have you paid?"
+
+  utter_ask_money_details_form_amount_paid_isfull:
+  - text: "Have you paid the full amount?"
+    buttons:
+    - title: "amount_paid_isfull is yes"
+      payload: '/affirm{{"amount_money_paid":"yes"}}'
+    - title: "amount_paid_isfull is no"
+      payload: '/deny{{"amount_money_paid":"no"}}'
+
+  utter_ask_intentofreselling:
+  - text: "Have you obtained such {grievance_type} with the objective of reselling such {grievance_type} for any commercial purpose?"
+    buttons:
+    - title: "intentofreselling is yes"
+      payload: '/affirm{{"intentofreselling":"yes"}}'
+    - title: "intentofreselling is no"
+      payload: '/deny{{"intentofreselling":"no"}}'
+
+  utter_ask_if_fault:
+  - text: "Do you think that there is any fault, imperfection or shortcoming in the quality, quantity, potency, purity or standard of the {grievance_type} that you have received?"
+    buttons:
+    - title: "if_fault is yes"
+      payload: '/affirm{{"if_fault":"yes"}}'
+    - title: "if_fault is no"
+      payload: '/deny{{"if_fault":"no"}}'
+
+  utter_ask_fault_details_form_if_fault_under_law:
+  - text: "To the best of your knowledge, is such quality, quantity, potency, purity or standard required to be maintained under any law? (For example, expiry date for use as mentioned on the package) [We may ask in addition whether the lay person is actually aware of any such law]"
+    buttons:
+    - title: "if_fault_under_law is yes"
+      payload: '/affirm{{"if_fault_under_law":"yes"}}'
+    - title: "if_fault_under_law is no"
+      payload: '/deny{{"if_fault_under_law":"no"}}'
+
+  utter_ask_fault_details_form_if_fault_under_law_deal:
+  - text: "Was such quality, quantity, potency, purity or standard promised by the person who sold you the {grievance_type}, either in an express or in an implied manner, and/or in any contract that you might have entered into with the seller?"
+    buttons:
+    - title: "if_fault_under_law_deal is yes"
+      payload: '/affirm{{"if_fault_under_law_deal":"yes"}}'
+    - title: "if_fault_under_law_deal is no"
+      payload: '/deny{{"if_fault_under_law_deal":"no"}}'
+
+  utter_ask_fault_details_form_fault_identify_date:
+  - text: "What was the date on which you identified this defect in {grievance_type} for the first time?"
+
+  utter_ask_if_complaint_filed:
+  - text: "Did you file any complaint to any consumer forum already since then?"
+    buttons:
+    - title: "if_complaint_filed is yes"
+      payload: '/affirm{{"if_complaint_filed":"yes"}}'
+    - title: "if_complaint_filed is no"
+      payload: '/deny{{"if_complaint_filed":"no"}}'
+
+  utter_ask_if_complaint_not_filed_reason:
+  - text: "If the date is more than two years back, then what was the reason for not having filed any complaint before? Was it due to the action/misrepresentation of the seller of {grievance_type} provider, or of any other third party including lawyers?"
+    buttons:
+    - title: "complaint_not_filed_reason is yes"
+      payload: '/affirm{{"complaint_not_filed_reason":"yes"}}'
+    - title: "complaint_not_filed_reason is no"
+      payload: '/deny{{"complaint_not_filed_reason":"no"}}'
+
+  utter_ask_fault_details_form_defect_sample:
+  - text: "Do you have any sample of the {grievance_type} left in your possession from which the defect can be ascertained? Can you retain and preserve the sample for subsequent analysis?"
+    buttons:
+    - title: "defect_sample is yes"
+      payload: '/affirm{{"defect_sample":"yes"}}'
+    - title: "defect_sample is no"
+      payload: '/deny{{"defect_sample":"no"}}'
+
+  utter_ask_fault_details_form_defect_sample_photo:
+  - text: "If the defect is visible to the naked eye, then can you retain the {grievance_type}/obtain geo- tagged photographs of the good highlighting the defect?"
+    buttons:
+    - title: "defect_sample_photo is yes"
+      payload: '/affirm{{"defect_sample_photo":"yes"}}'
+    - title: "defect_sample_photo is no"
+      payload: '/deny{{"defect_sample_photo":"no"}}'
+
+  utter_ask_location:
+  - text: "What are the respective locations of yourself, the seller of {grievance_type}, and the place at which the {grievance_type} had been performed/delivered to you?"
+
+entities:
+  - grievance_type
+  - if_money_paid
+  - amount_money_paid
+  - amount_paid_isfull
+  - intentofreselling
+  - if_fault
+  - if_fault_under_law
+  - if_fault_under_law_deal
+  - fault_identify_date
+  - if_complaint_filed
+  - complaint_not_filed_reason
+  - defect_sample
+  - defect_sample_photo
+  - location
+
+slots:
+  grievance_type:
+    type: any
+
+  if_money_paid:
+    type: any
+
+  amount_money_paid:
+    type: any
+
+  amount_paid_isfull:
+    type: any
+
+  intentofreselling:
+    type: any
+
+  if_fault:
+    type: any
+
+  if_fault_under_law:
+    type: any
+
+  if_fault_under_law_deal:
+    type: any
+
+  fault_identify_date:
+    type: any
+
+  if_complaint_filed:
+    type: any
+
+  complaint_not_filed_reason:
+    type: any
+
+  defect_sample:
+    type: any
+
+  defect_sample_photo:
+    type: any
+
+  location:
+    type: any
+
+forms:
+  money_details_form:
+    required_slots:
+        amount_money_paid:
+          - type: from_entity
+            entity: amount_money_paid
+        amount_paid_isfull:
+          - type: from_entity
+            entity: amount_paid_isfull
+  fault_details_form:
+    required_slots:
+        if_fault_under_law:
+          - type: from_entity
+            entity: if_fault_under_law
+        if_fault_under_law_deal:
+          - type: from_entity
+            entity: if_fault_under_law_deal
+        fault_identify_date:
+          - type: from_entity
+            entity: fault_identify_date
+        defect_sample:
+          - type: from_entity
+            entity: defect_sample
+        defect_sample_photo:
+          - type: from_entity
+            entity: defect_sample_photo
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

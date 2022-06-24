@@ -1,0 +1,143 @@
+version: "2.0"
+
+stories:
+
+
+- story: details of money path happy
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_grievance_type
+  - intent: inform_grievance_type
+  - action: utter_ask_if_money_paid
+  - intent: affirm
+    entities:
+    - if_money_paid: yes
+  - slot_was_set:
+    - if_money_paid: yes
+  - action: money_details_form
+  - active_loop: money_details_form
+  - slot_was_set:
+    - requested_slot: amount_money_paid
+  - slot_was_set:
+    - requested_slot: amount_paid_isfull
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_ask_intentofreselling
+
+
+- story: details of money path unhappy
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_grievance_type
+  - intent: inform_grievance_type
+  - action: utter_ask_if_money_paid
+  - intent: deny
+    entities:
+    - if_money_paid: no
+  - slot_was_set:
+    - if_money_paid: no
+  - action: utter_ask_intentofreselling
+
+
+- story: details of reselling
+  steps:
+  - action: utter_ask_intentofreselling
+  - or:
+    - intent: affirm
+    - intent: deny
+
+
+- story: details of fault path happy
+  steps:
+  - action: utter_ask_if_fault
+  - intent: affirm
+    entities:
+    - if_fault: yes
+  - slot_was_set:
+    - if_fault: yes
+  - action: fault_details_form
+  - active_loop: fault_details_form
+  - slot_was_set:
+    - requested_slot: if_fault_under_law
+  - slot_was_set:
+    - requested_slot: if_fault_under_law_deal
+  - slot_was_set:
+    - requested_slot: fault_identify_date
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_ask_if_complaint_filed
+
+- story: details of fault path unhappy
+  steps:
+  - action: utter_ask_if_fault
+  - intent: deny
+    entities:
+    - if_fault: no
+  - slot_was_set:
+    - if_fault: no
+  - action: utter_ask_if_complaint_filed
+
+
+- story: money paid yes path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_grievance_type
+  - intent: inform_grievance_type
+    entities:
+    - grievance_type: good
+  - slot_was_set:
+    - grievance_type: good
+  - action: utter_ask_if_money_paid
+  - intent: affirm
+    entities:
+    - if_money_paid: yes
+  - slot_was_set:
+    - if_money_paid: yes
+  - action: money_details_form
+  - active_loop: money_details_form
+  - slot_was_set:
+    - requested_slot: amount_money_paid
+  - slot_was_set:
+    - amount_money_paid: '60000'
+  - slot_was_set:
+    - requested_slot: amount_paid_isfull
+  - slot_was_set:
+    - amount_paid_isfull: yes
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_ask_intentofreselling
+  - intent: affirm
+    entities:
+    - intentofreselling: yes
+  - slot_was_set:
+    - intentofreselling: yes
+
+- story: money paid no path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_grievance_type
+  - intent: inform_grievance_type
+    entities:
+    - grievance_type: service
+  - slot_was_set:
+    - grievance_type: service
+  - action: utter_ask_if_money_paid
+  - intent: deny
+    entities:
+    - if_money_paid: no
+  - slot_was_set:
+    - if_money_paid: no
+  - action: utter_ask_intentofreselling
+  - intent: deny
+    entities:
+    - intentofreselling: no
+  - slot_was_set:
+    - intentofreselling: no
+
