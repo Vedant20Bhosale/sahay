@@ -1,5 +1,4 @@
 version: "2.0"
-
 nlu:
 - intent: greet
   examples: |
@@ -103,6 +102,15 @@ nlu:
   examples: |
     - [60000](amount_money_paid)
     - I have paid [20000](amount_money_paid)
+    - [50000](amount_money_paid)
+    - [2976](amount_money_paid)
+    - [64745](amount_money_paid)
+    - [78844](amount_money_paid)
+    - [58864](amount_money_paid)
+    - [67888](amount_money_paid)
+    - [40765](amount_money_paid)
+    - [56789](amount_money_paid)
+    - [76897](amount_money_paid)
 - intent: inform_fault_identify_date
   examples: |
     - [24 jan](fault_identify_date)
@@ -110,9 +118,17 @@ nlu:
     - [5th FEB 2018](fault_identify_date) was the date.
     - I came to know about it on [05/03/2016](fault_identify_date)
     - [26 jan](fault_identify_date)
+    - [24 jan 2019](fault_identify_date)
+    - [5/2/2018](fault_identify_date)
+    - [02/04/19](fault_identify_date)
+    - [15 aug](fault_identify_date)
+    - [03/06/2020](fault_identify_date)
 - intent: inform_complaint_not_filed_details
   examples: |
     - I was not aware of the complaint forum.
 - intent: inform_location
   examples: |
-    - I am located in Mumbai.The seller is from mumbai and i bought the hard disk from mumbai.
+    - I am located in [Mumbai](location_user).The seller is from [mumbai](location_seller) and i bought the hard disk from [mumbai](location_delivery).
+    - [Thane](location_user),[Pune](location_seller),[Delhi](location_delivery)
+    - [Delhi](location_user), [Thane](location_seller) , [Pune](location_delivery)
+    - [Pune](location_delivery), [Thane](location_seller), [Delhi](location_user)
